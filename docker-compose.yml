@@ -1,0 +1,37 @@
+# Projeto Ambiente Ansible
+# Owner: Felipe Marques v.1.0
+
+version: '3.4'
+
+services:
+    srv-ansible:
+        image: centos7-ssh
+        container_name: srv-ansible
+        hostname: srv-ansible
+        networks:
+            lan-lab:
+              ipv4_address: 172.28.1.10
+
+
+    srv-host01:
+        image: centos7-ssh
+        container_name: srv-host01
+        hostname: srv-host01
+        networks:
+            lan-lab:
+              ipv4_address: 172.28.1.11
+
+    srv-host02:
+        image: centos7-ssh
+        container_name: srv-host02
+        hostname: srv-host02
+        networks:
+            lan-lab:
+              ipv4_address: 172.28.1.12
+
+networks:
+    lan-lab:
+        ipam:
+          driver: default
+          config:
+            - subnet: 172.28.1.0/24
